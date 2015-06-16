@@ -104,16 +104,8 @@ map <C-n> :NERDTreeToggle<CR>
 
 
 " =============================================================================
-" Mbmake
+" Make
 " =============================================================================
-" noremap ,cs :Shell mbmake compile PLINK_ARCH=sundev1 <cr>
-" noremap ,cl :Shell mbmake compile plink_arch=linux <cr>
-" noremap ,ci :Shell mbmake compile PLINK_ARCH=ibm <cr>
-" noremap ,ch :Shell mbmake compile PLINK_ARCH=hp <cr>
-" noremap ,ccc :Shell mbmake clean <cr>
-" noremap ,cll :Shell mbmake compile-local <cr>
-"autocmd QuickFixCmdPost [^l]* nested copen
-"autocmd QuickFixCmdPost    l* nested lwindow
 
 noremap ,m :Make!<cr>
 noremap ,ms :Make<cr>
@@ -127,7 +119,6 @@ set makeprg=plink\ *.mk
 set errorformat=%f:%l:%c:\ %trror:\ %m,
         \%f:%l:%c:\ %tarning:\ %m,
         \%f:%l:%c:\ %m
-
 
 " =============================================================================
 " Clang Complete

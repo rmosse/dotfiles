@@ -11,10 +11,6 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 let uname = substitute(system("uname"),"\n","","g")
-if uname == "Linux"
-"Bundle 'Valloric/YouCompleteMe'
-
-endif
 
 Plugin 'kien/ctrlp.vim'
 Plugin 'derekwyatt/vim-fswitch'
@@ -31,6 +27,7 @@ Plugin 'derekwyatt/vim-protodef'
 Plugin 'scrooloose/nerdtree'
 Plugin 'aperezdc/vim-template'
 Plugin 'Rip-Rip/clang_complete'
+Plugin 'benekastah/neomake'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -114,7 +111,13 @@ noremap ,b :Make buildobjs <cr>
 noremap ,e :Copen <cr>
 noremap ,ee :cclose <cr>
 
-set makeprg=plink\ *.mk
+    
+if uname == "Darwin"
+    set makeprg=Make
+    autocmd! BufWritePost * Neomake!
+else
+    set makeprg=plink\ *.mk
+endif
 
 set errorformat=%f:%l:%c:\ %trror:\ %m,
         \%f:%l:%c:\ %tarning:\ %m,
@@ -128,6 +131,7 @@ let g:clang_use_library = 1
 let g:clang_jumpto_declaration_key = "<Nop>"
 let g:clang_jumpto_back_key = "<Nop>"
 
+let g:clang_library_path = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib"
 " =============================================================================
 " Rainbow Parentheses 
 " =============================================================================
@@ -247,3 +251,4 @@ colorscheme molokai
 if &diff
      set background=dark
 endif
+

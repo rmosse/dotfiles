@@ -34,6 +34,8 @@ Plugin 'benekastah/neomake'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+" Store swap files in fixed location, not current directory.
+set dir=~/.vimswap//,/var/tmp//,/tmp//,.
 
 " =============================================================================
 " General settings 
